@@ -1,28 +1,18 @@
-CS 214: Systems Programming, Spring 2016
-Programming Assignment 3: Indexer
-Due 2355, 14 April 2016
-Warning: As you will see below, the descriptions of the assignments will be increasingly complex
-because we are asking you to build increasingly bigger programs. Make sure to read the assignment
-carefully! This is critical because this document describes the requirements for your
-program.
-1. Introduction
- In this assignment you will practice using the file system API (as well as pointers in different data
-structures). In particular you will be creating, opening, reading, writing, and deleting files.
-Your task is to write an indexing program, called an indexer. Given a set of files, an indexer will
+ Given a set of files, an indexer will
 parse the files and create an inverted index, which maps each token found in the files to the subset
 of files that contain that token. In your indexer, you will also maintain the frequency with which
 each token appears in each file. The indexer should tokenize the files and produce an inverted index of
 how many times the word occurred in each file, sorted by word. Your output should be in the following
 format:
 {"list" : [
-{ìword0" : [
+{‚Äúword0" : [
 {"filename0" : count0},
 {"filename1" : count1}
 ]},
 {"word1" : [
 {"filename2" : count2},
 {"filename3" : count3},
-{ìfilename4î : count4}
+{‚Äúfilename4‚Äù : count4}
 ]}
 ]}
 Here is an example of how the indexer should work. If you are given the following set of files:
@@ -39,30 +29,30 @@ Your indexer should output:
 {"baa" : [
 {"baa" : 1}
 ]},
-{ìbooî : [
+{‚Äúboo‚Äù : [
 {"boo" : 1}
 ]},
-{ìcatî : [
+{‚Äúcat‚Äù : [
 {"baa" : 3}
 ]},
-{ìdogî : [
+{‚Äúdog‚Äù : [
 {"boo" : 1}
 ]},
-{ìnameî : [
+{‚Äúname‚Äù : [
 {"boo" : 2},
 {"baa" : 1}
 ]}
 ]}
 After constructing the entire inverted index in memory, the indexer will save it to a file.
 An inverted index is a sequence of mappings where each mapping maps a token (e.g.,
-ìdogî) to a list of records, with each record containing the name of a file whose content
+‚Äúdog‚Äù) to a list of records, with each record containing the name of a file whose content
 contains the token and the frequency with which the token appears in the file.
 The above depiction gives a logical view of the inverted index. In your program, you
 have to define data structures to hold the mappings (token list) and the records (file
 name, count).
 The mappings are maintained in sorted order of the tokens. You will see later why this is
 useful. Your mappings should be maintained in ascending sorted order based on the ASCII coding of
-characters (i.e., ìaî before ìbî and ìaaî before ìabî).
+characters (i.e., ‚Äúa‚Äù before ‚Äúb‚Äù and ‚Äúaa‚Äù before ‚Äúab‚Äù).
 Records in each list are maintained in descending sorted order based on frequency counts
 of the tokens in the files. Again, you will see later why this is useful.
 Tokens are not case sensitive. All upper-case letters should be converted to lower-case.
@@ -131,7 +121,7 @@ A tarred gzipped file name Asst3.tgz that contains a directory called Asst3 with
 to prepare a fresh compilation of everything.
  A file called testplan.txt that contains a test plan for your indexer. You should include the
 example files and/or directories that you test your indexer on but keep these from being too
-large, please. (We might test your program with a very large data set though so donít skip
+large, please. (We might test your program with a very large data set though so don‚Äôt skip
 testing your program for scalability. In your test plan, you should discuss the larger scale
 testing and the results, but you can skip including the data set).
  A readme.pdf file that describes the design of your indexer. This should also include the
